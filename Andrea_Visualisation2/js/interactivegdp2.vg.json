@@ -1,0 +1,125 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "background": "#FEF8F4",
+    "data": {
+        "url": "data/v3_clean_GDP.csv"
+    },
+    "vconcat": [
+        {
+            "params": [
+                {
+                "name": "Sea-LevelRiseScenarios_highlight",
+                "select": { "type": "point", "fields": ["Sea-LevelRiseScenarios"] },
+                "bind": "legend"
+            }],
+            "encoding": {
+                "color": {
+                    "condition": {
+                        "param": "brush",
+                        "title": "Sea-Level Rise Scenarios",
+                        "field": "Sea-LevelRiseScenarios",
+                        "type": "nominal",
+                        "scale": {
+                            "domain": ["1 meter", "2 meter", "3 meter", "4 meter", "5 meter"],
+                            "range": ["#85AEFF", "#FFAE5D", "#FF9B9D", "#97E7E5", "#C5E0B4"]
+                        }
+                    },
+                    "value": "lightgray"
+                },
+                "opacity": {
+                "condition": { "selection": "Sea-LevelRiseScenarios_highlight", "value": 0.6 },
+                "value": 0.2
+            },
+                "size": {
+                    "title": "Percentage of GDP impacted",
+                    "field": "Percentage of GDP impacted",
+                    "scale": { "domain": [-1, 10, 20, 30, 40] },
+                    "type": "quantitative"
+                },
+                "y": {
+                    "field": "Region",
+                    "type": "nominal",
+                    "title": "Region"
+                },
+                "x": {
+                    "axis": { "title": "Percentage of GDP impacted" },
+                    "field": "Percentage of GDP impacted",
+                    "scale": { "domain": [0, 40] },
+                    "type": "quantitative"
+                },
+                "tooltip": [
+                    { "field": "Country", "type": "nominal" },
+                    { "field": "ImpactedGDP", "type": "quantitative", "title": "GDP Impacted (in million USD)", "format": "," },
+                    { "field": "Percentage of GDP impacted", "type": "quantitative", "title": "% of GDP impacted", "format": ".2f" }
+                ]
+            },
+            "width": 800,
+            "height": 500,
+            "params": [{
+                "name": "brush",
+                "select": { "type": "interval", "encodings": ["x"] }
+            }, {
+                "name": "Sea-LevelRiseScenarios_highlight",
+                "select": { "type": "point", "fields": ["Sea-LevelRiseScenarios"] },
+                "bind": "legend"
+            }],
+            "mark": {
+                "type": "circle",
+                "opacity": 0.7,
+                "stroke": "black",
+                "strokeWidth": 0.6
+            },
+            "transform": [{ "filter": { "param": "click" } },
+                { "calculate": "datum.ImpactedGDP/datum.TotalGDP*100", "as": "Percentage of GDP impacted" }
+            ]
+        },
+        {
+            "encoding": {
+                
+            "opacity": {
+                "condition": { "selection": "Sea-LevelRiseScenarios_highlight", "value": 0.6 },
+                "value": 0.2
+            },
+                "color": {
+                    "condition": {
+                        "param": "click",
+                        "field": "Sea-LevelRiseScenarios",
+                        "sort": { "field": "*", "order": "ascending", "op": "count" },
+                        "scale": {
+                            "domain": ["1 meter", "2 meter", "3 meter", "4 meter", "5 meter"],
+                            "range": ["#85AEFF", "#FFAE5D", "#FF9B9D", "#97E7E5", "#C5E0B4"]
+                        }
+                    },
+                    "value": "lightgray"
+                },
+                "x": { "field": "Percentage of GDP impacted", "type": "quantitative", "title": "Percentage of GDP impacted", "axis": null },
+                "y": { "field": "Region", "type": "nominal" },
+                "tooltip": [
+                    { "field": "Region", "type": "nominal" },
+                    { "field": "TotalRegionGDP", "type": "quantitative", "title": "GDP Impacted (in million USD)", "format": "," },
+                    { "field": "PercentageRegion", "type": "quantitative", "title": "% of GDP impacted", "format": ".2f" }
+                ]
+            },
+            "width": 800,
+            "height": 250,
+            "params": [{
+                    "name": "click",
+                    "select": { "type": "point", "encodings": ["color"] }
+                },
+                {
+                    "name": "Sea-LevelRiseScenarios_highlight",
+                    "select": { "type": "point", "fields": ["Sea-LevelRiseScenarios"] },
+                    "bind": "legend"
+                }
+            ],
+            "mark": "bar",
+            "transform": [{ "filter": { "param": "brush" } },
+                { "calculate": "datum.ImpactedGDP/datum.TotalGDP*100", "as": "Percentage of GDP impacted" }
+            ],
+            "opacity": {
+                "condition": { "selection": "Sea-LevelRiseScenarios_highlight", "value": 0.6 },
+                "value": 0.2
+            }
+        }
+    ]
+}

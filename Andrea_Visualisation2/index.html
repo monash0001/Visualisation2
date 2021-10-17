@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+
+</head>
+<body>
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <img src="risesealevel3.png"/>
+    <div>
+
+ <div class="page">
+
+   <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Global Rise in Sea Level</h1>
+        <div class="row">
+          <div class="column">            
+            <p style="padding-right: 15px; ">Global Sea Level Rise (SLR) has become a <b><i>serious global threat</i></b> with continued growth of greenhouse gas 
+                  emissions and associated global warming.</p>
+          </div>
+          <div class="column" >           
+            <p>This visualisation studies the effect of SLR on <b><i>84 coastal 
+              developing countries</i></b> by looking at critical elements such as impact on <b><i>population, land, GDP, and agriculture</i></b>, 
+                  by inundation zones projected at <span class='case1m_text'> 1m </span> to <span class='case5m_text'> 5m </span> SLR.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h2>Effect on Global Population</h2>
+            <p><b><i>Vietnam</i></b> is the most seriously impacted by SLR. There is a large proportion of Vietnam's population residing in the Mekong and Red River
+              Deltas, the most impacted area by SLR. 10.8% of Vietnam's population is impacted by a <span class='case1m_text'> 1m </span> SLR. This is the largest percentage among all 84 coastal countries. </p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="vis2"  class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-right">
+            <h2>Effect on Land Area</h2>
+            <p>Land Area in <b><i>East Asia</i></b> is the most significantly impacted by SLR. For all Sea Level Rise Scenarios, East Asia is the most severely impacted region in the developing world.
+              A major contributor is <b><i>Vietnam</i></b> where <b><i>16%</i></b> of its country area is impacted by a <span class='case5m_text'> 5m </span> SLR.
+            </p>
+          </div>
+        </div>
+      
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+     <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2>Effect on Agriculture</h2>
+          <p>Agricultural extent in <b><i>East Asia</i></b> is the most significantly impacted by SLR, where major contributors include
+            <b><i>Myanmar</i></b> and <b><i>Vietnam</i></b> where the impact on Agricultural extent reaches <b><i>11.1%</i></b> and <b><i>23.4%</i></b>
+            respectively with a <span class='case5m_text'> 5m </span> SLR. 
+            </p>
+        </div>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="vis3"  class="vis-container"></div>
+      </div>
+    
+    </div>
+
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+     <div class="pure-g">
+      <div class="pure-u-1-1">
+          <h2 style="text-align:center;">Effect on GDP</h2>
+          <p style="padding-right: 150px; padding-left: 150px;">The impact of SLR on <b><i>GDP</i></b> is slightly larger than the
+            impact on <b><i>population</i></b>, because GDP per capita is generally 
+            above average for coastal populations and cities.Impact on GDP 
+            is much larger in <b><i>East Asia</i></b> than in any other region 
+            of the world, reaching <b><i>10.2%</i></b> with a <span class='case5m_text'> 5m </span> SLR. 
+          </p>
+          
+          </div>
+        </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+     <div class="pure-g">
+      
+      <div class="pure-u-1-8">         
+      </div>
+
+      <div class="pure-u-7-8">
+        <div id="vis4"  class="vis-container"></div>
+      </div>  
+        
+
+    </div>
+
+    <!-- end pure grid group -->   
+
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p style="padding-right: 150px; padding-left: 150px;">This visualisation is created by <a href="https://github.com/monash0001" target="_blank">Andrea Boey</a> for FIT3179 Assignment. The datasource is <a href="https://datacatalog.worldbank.org/search/dataset/0041449/World-Sea-Level-Rise-Dataset"" target="_blank">from The World Bank Database</href>.</p>
+      </div>
+    </div>
+  
+
+  </div> <!-- end page -->
+   
+<script type="text/javascript">
+  var specVis1 = "./js/v6_NormalisedSeaLevel_byPopulation.vg.json";
+  var specVis2= "./js/horizontal_stacked_bar_chart.vg.json";
+  var specVis3= "./js/line_chart.vg.json";
+  var specVis4= "./js/interactivegdp2.vg.json";
+
+
+  vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#vis2', specVis2, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis3', specVis3, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis4', specVis4, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+</script>
+</body>
+</html>

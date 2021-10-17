@@ -1,0 +1,24 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#FEF8F4",
+    "data": {"url": "data/Agri_Clean.csv"},
+    "width":700,
+    "height":350,
+    "mark": {
+      "type": "line",
+      "point": {
+        "filled": false,
+        "fill": "white"
+      }
+    },
+    "encoding": {
+      "x": {"field": "SLR","type": "nominal","title":"Sea-Level Rise Scenarios", "axis":{"labelAngle":0}},
+      "y": {"field": "impactedregionarea", "type": "quantitative","title":"Impacted Agriculture Extent (%)"},
+      "color": {"field": "Region", "type": "nominal"},
+      "tooltip": [
+        {"field": "impactedregionarea", "type": "quantitative","title":"Region Area Impacted (in %)","format": ".2f"}
+        ]
+    },
+    "title": "Impact of Rising Sea Level on Agriculture"
+  }
+  
